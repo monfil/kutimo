@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@import "bulma";
+ 
+
 @import "bootstrap";
-@import "bootstrap-cdn";
+/*@import "bootstrap-cdn";*/
