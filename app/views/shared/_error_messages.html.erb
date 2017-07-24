@@ -1,0 +1,15 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="notification is-warning">
+      The form contains <%= pluralize(@user.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <div align="left">
+        <li class="is-warning"><%= msg %></li>
+      </div>
+    <% end %>
+    </ul>
+  </div>
+  <br><br>
+<% end %>

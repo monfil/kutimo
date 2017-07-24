@@ -1,0 +1,18 @@
+
+/* forms */
+
+#error_explanation {
+  ul {
+    color: red;
+  }
+}
+
+.field_with_errors {
+  .input {
+    color: red;
+  }
+}
+
+.is-warning {
+	font-size: 13px;
+}

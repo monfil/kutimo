@@ -1,3 +1,70 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-<p>This will be a signup page for new users.</p>
+
+<div class="content is-large has-text-centered">
+	<h1>Sign up</h1>
+</div>
+
+<section class="section is-small">
+	<div class="container">
+		<div class="columns is-mobile">
+			<div class="column is-8 is-offset-2">
+				<%= form_for(@user, url: signup_path) do |f| %>
+
+					<%= render 'shared/error_messages' %>
+
+			    <div align="left">
+				    <%= f.label :name %>
+			    </div>
+			    <p class="control has-icon has-icon-right">
+				    <%= f.text_field :name, class: "input email-input" %>
+				    <span class="icon user">
+              <i class="fa fa-user"></i>
+            </span>
+			    </p>
+
+			    <div align= "left">
+				    <%= f.label :last_name %>
+			    </div>
+			    <p class="control has-icon has-icon-right">
+				    <%= f.text_field :last_name, class: "input email-input" %>
+				    <span class="icon user">
+              <i class="fa fa-user"></i>
+            </span>
+			    </p>
+
+			    <div align= "left">
+				    <%= f.label :email %>
+			    </div>
+			    <p class="control has-icon has-icon-right">
+				    <%= f.email_field :email, class: "input email-input" %>
+				    <span class="icon user">
+              <i class="fa fa-envelope"></i>
+            </span>
+			    </p>
+
+			    <div align= "left">
+				    <%= f.label :password %>
+			    </div>
+			    <p class="control has-icon has-icon-right">
+				    <%= f.password_field :password, class: "input password-input" %>
+				    <span class="icon user">
+              <i class="fa fa-lock"></i>
+            </span>
+			    </p>
+
+			    <div align= "left">
+				    <%= f.label :password_confirmation, "Confirm password" %>
+			    </div>
+			    <p class="control has-icon has-icon-right">
+				    <%= f.password_field :password_confirmation, class: "input password-input" %>
+				    <span class="icon user">
+              <i class="fa fa-lock"></i>
+            </span>
+			    </p>
+
+			    <%= f.submit "Sign Up", class: "button is-primary is-fullwidth" %>
+			  <% end %>
+			</div>
+		</div>
+	</div>
+</section>
