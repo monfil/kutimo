@@ -21,14 +21,16 @@
       <%= render 'layouts/header' %>
       <section class="hero is-primary">
         <br></br> 
-      </section>  
+      </section>
+
+      <div class="container">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
 
       <!-- CONTENT -->
       <section class="section">
         <div class="content is-large has-text-centered">
-          <% flash.each do |message_type, message| %>
-            <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-          <% end %>
           <%= yield %>
         </div>
       </section>
