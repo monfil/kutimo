@@ -10,7 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724061554) do
+ActiveRecord::Schema.define(version: 20170725015758) do
+
+  create_table "daily_records", force: :cascade do |t|
+    t.integer "user_goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_goal_id"], name: "index_daily_records_on_user_goal_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "goal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.string "reward"
+    t.boolean "received", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_goals", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "goal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_user_goals_on_goal_id"
+    t.index ["user_id"], name: "index_user_goals_on_user_id"
+  end
+
+  create_table "user_rewards", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "reward_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reward_id"], name: "index_user_rewards_on_reward_id"
+    t.index ["user_id"], name: "index_user_rewards_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -19,7 +63,18 @@ ActiveRecord::Schema.define(version: 20170724061554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.integer "group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["group_id"], name: "index_users_on_group_id"
+  end
+
+  create_table "vulgarities", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "count", default: 0
+    t.float "amount", default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_vulgarities_on_user_id"
   end
 
 end

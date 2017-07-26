@@ -9,3 +9,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     end
   end
 end
+
+# Add group reference in users
+# rails generate migration AddGroupRefToUsers group:references
