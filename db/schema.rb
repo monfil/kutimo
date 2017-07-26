@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725015758) do
+ActiveRecord::Schema.define(version: 20170726182242) do
 
   create_table "daily_records", force: :cascade do |t|
     t.integer "user_goal_id"
@@ -25,15 +25,24 @@ ActiveRecord::Schema.define(version: 20170725015758) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "group_users", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "owner"
   end
 
   create_table "rewards", force: :cascade do |t|
     t.string "reward"
-    t.boolean "received", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170725015758) do
     t.integer "goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "accomplished", default: false
     t.index ["goal_id"], name: "index_user_goals_on_goal_id"
     t.index ["user_id"], name: "index_user_goals_on_user_id"
   end
@@ -52,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170725015758) do
     t.integer "reward_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "received", default: false
     t.index ["reward_id"], name: "index_user_rewards_on_reward_id"
     t.index ["user_id"], name: "index_user_rewards_on_user_id"
   end
@@ -63,9 +74,7 @@ ActiveRecord::Schema.define(version: 20170725015758) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.integer "group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["group_id"], name: "index_users_on_group_id"
   end
 
   create_table "vulgarities", force: :cascade do |t|
