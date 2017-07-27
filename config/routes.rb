@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
 	get     '/signedup', to: 'static_pages#signedup'
 
+	get     '/penalty',  to: 'vulgarity#add', as: 'vulgarity'
+
 	resources :users
 
 end

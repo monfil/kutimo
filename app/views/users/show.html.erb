@@ -1,2 +1,12 @@
 <% provide(:title, @user.name) %>
 Welcome, <%= @user.name %> <%= @user.last_name %>
+<br><br>
+<figure>
+  <%= link_to image_tag("goal.png", size: "150x150", alt: "Goals"), '#' %>
+  <%= link_to image_tag("reward.png", size: "150x150", alt: "Rewards"), '#' %>
+</figure>
+<br>
+<figure>
+  <%= link_to image_tag("dashboard.png", size: "150x150", alt: "Dashboard"), '#' %>
+  <%= link_to image_tag("penalty.png", size: "150x150", alt: "Add penalty"), vulgarity_path %>
+</figure>

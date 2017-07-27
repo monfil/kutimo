@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
+      Vulgarity.create(user_id: @user.id)
       flash[:success] = "Welcome to the kutimo!"
   		redirect_to signedup_path
   	else

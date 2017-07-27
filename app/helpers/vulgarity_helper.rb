@@ -1,0 +1,2 @@
+module VulgarityHelper
+end
