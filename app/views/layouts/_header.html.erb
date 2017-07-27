@@ -12,7 +12,6 @@
       <div align="right" id="NavMenu" class="navbar-menu is-boxed">
         <div class="navbar-start">
           <p class="navbar-item"> <!-- Menu Login link -->
-            <%= logged_in? %>
             <% if logged_in? %>
               <strong>
                 <%= link_to "Logout", logout_path, method: :delete %>

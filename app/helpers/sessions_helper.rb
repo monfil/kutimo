@@ -14,8 +14,11 @@ module SessionsHelper
 	end
 
 	def log_out
-		session.delete(:user_id)
-		@current_user = nil
+		p "*** SALIENDO DE APLICACION "
+		# session.delete(:user_id)
+		# session[:user_id] = nil
+		reset_session
+		p @current_user = nil
 	end
 
 end
