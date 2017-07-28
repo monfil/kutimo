@@ -10,3 +10,5 @@ Welcome, <%= @user.name %> <%= @user.last_name %>
   <%= link_to image_tag("dashboard.png", size: "150x150", alt: "Dashboard"), dashboard_path %>
   <%= link_to image_tag("penalty.png", size: "150x150", alt: "Add penalty"), vulgarity_path %>
 </figure>
+
+<%= link_to 'Reset penalties', reset_path(current_user.id) %>

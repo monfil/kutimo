@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
 	get     '/penalty',   to: 'vulgarity#add',         as: 'vulgarity'
 
+	get '/user/:user_id/reset', to: 'vulgarity#reset', as: 'reset'
+
 	get     '/dashboard', to: 'dashboard#show',        as: 'dashboard'
 
 	get     '/goals',     to: 'goals#goals_options',    as: 'goals'
