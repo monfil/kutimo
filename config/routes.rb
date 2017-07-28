@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
 	get '/add_goal/:user_id', to: 'goals#show_goals', as: 'add_goal'
 
-	put '/user/:user_id/goal/:goal_id/add_goal_user', to: 'goals#add_goal', as: 'add_goal_user'
+	get '/user/:user_id/goal/:goal_id/add_goal_user', to: 'goals#add_goal', as: 'add_goal_user'
 
 	delete '/restart_goal_record/:user_id/:goal_id', to: 'goals#restart_goal_record', as: 'restart_goal'
 

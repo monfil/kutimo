@@ -1,6 +1,8 @@
 class GoalsController < ApplicationController
 
 	def goals_options
+		@all_goals = Goal.all
+		@user_goals = current_user.goals
 	end
 
 	def user_goals
@@ -49,7 +51,8 @@ class GoalsController < ApplicationController
 	end
 
 	def add_goal
-		add_goal = UserGoal.create(user_id: params[:user_id], goal_id: params[:goal_id])		
+		add_goal = UserGoal.create(user_id: params[:user_id], goal_id: params[:goal_id])
+		redirect_to goals_path	
 	end
 
 	def restart_goal_record
