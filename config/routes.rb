@@ -8,19 +8,21 @@ Rails.application.routes.draw do
 
 	get    'static_pages/home'
 	
-	get    '/signup',   to: 'users#new'
+	get    '/signup',      to: 'users#new'
 
-	post   'signup',    to: 'users#create'
+	post   'signup',       to: 'users#create'
 
-	get    '/login',    to: 'sessions#new'
+	get    '/login',       to: 'sessions#new'
 
-	post   '/login',    to: 'sessions#create'
+	post   '/login',       to: 'sessions#create'
 
-	delete '/logout',   to: 'sessions#destroy', as: 'logout'
+	delete '/logout',      to: 'sessions#destroy',      as: 'logout'
 
-	get     '/signedup', to: 'static_pages#signedup'
+	get     '/signedup',   to: 'static_pages#signedup'
 
-	get     '/penalty',  to: 'vulgarity#add', as: 'vulgarity'
+	get     '/penalty',    to: 'vulgarity#add',         as: 'vulgarity'
+
+	get      '/dashboard', to: 'dashboard#show',        as: 'dashboard'
 
 	resources :users
 
