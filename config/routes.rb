@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
 	get     '/new_goal',   to: 'goals#new', as: 'new_goal'
 
-	post     '/new_goal',  to: 'goals#create', as: 'create_goal'
+	post     '/user/:user_id/new',  to: 'goals#create', as: 'create_goal'
 
 	delete  '/user_goals/:user_id/:goal_id', to: 'goals#destroy', as: 'goal'
 

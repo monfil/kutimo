@@ -18,6 +18,7 @@ class GoalsController < ApplicationController
 		@goal = Goal.new(goal_params)
 		if @goal.goal != ""
 			@goal.save
+			@user_goal = UserGoal.create(user_id: params[:user_id], goal_id: @goal.id)
 			redirect_to goals_path
 		else
 			redirect_to new_goal_path
