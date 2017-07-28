@@ -1,4 +1,4 @@
-class CreateVulgarities < ActiveRecord::Migration[5.1]
+class CreateVulgarities < ActiveRecord::Migration[5.0]
   def change
     create_table :vulgarities do |t|
     	t.references :user, index: true

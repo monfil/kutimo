@@ -1,4 +1,4 @@
-class CreateUserRewards < ActiveRecord::Migration[5.1]
+class CreateUserRewards < ActiveRecord::Migration[5.0]
   def change
     create_table :user_rewards do |t|
     	t.references :user, index: true

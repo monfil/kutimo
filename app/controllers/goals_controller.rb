@@ -64,11 +64,28 @@ class GoalsController < ApplicationController
 
 	def mark_goal
 		user_goal = UserGoal.find_by(user_id: params[:user_id], goal_id: params[:goal_id])
-		DailyRecord.create(user_goal_id: user_goal.id)
+		goal_records = user_goal.daily_records
+		
+		if goal_records.count != 0
+
+			goal_records.each do |record|
+				p record.created_at.to_date
+				if record.created_at.to_date == Date.current
+					# Record already exists
+					flash[:alert] = "Record already exists"
+				else
+					DailyRecord.create(user_goal_id: user_goal.id)
+				end
+			end
+
+		else
+			DailyRecord.create(user_goal_id: user_goal.id)
+		end
 		goal_count = user_goal.daily_records.count
 		if goal_count >= 15
 			user_goal.update(accomplished: true)
 		end
+
 	end
 
 	private
