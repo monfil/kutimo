@@ -2,7 +2,7 @@
   <div class="hero-head">
     <nav class="navbar is-transparent">
       <div class="navbar-brand">
-        <%= link_to image_tag("Logo47.png", size: "150x50", alt: "kutimo from the family for the family"), '/' %><!-- logo item (open dashboard if in session, open this page if no session)-->
+        <%= link_to image_tag("Logo47.png", size: "150x50", alt: "kutimo from the family for the family"), '#' %><!-- logo item (open dashboard if in session, open this page if no session)-->
         <div class="navbar-burger" data-target="NavMenu">
           <span></span>
           <span></span>
@@ -14,7 +14,7 @@
           <p class="navbar-item"> <!-- Menu Login link -->
             <% if logged_in? %>
               <strong>
-                <%= link_to "Logout", logout_path, method: :delete %>
+                <%= link_to "Home", current_user %> | <%= link_to "Logout", logout_path, method: :delete %>
               </strong>
             <% else %>
               <strong>

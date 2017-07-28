@@ -2,7 +2,8 @@
 
 <div class="block">
 	<%= link_to "My goals", user_goals_path, class: "button is-info" %>
-	<%= link_to "New goal", '#', class: "button is-success" %>
+	<%= link_to "Choose your goals", add_goal_path(current_user.id), class: "button is-success" %>
+	<%= link_to "New goal", new_goal_path, class: "button is-warning" %>
 </div>
 
 <% if @user_goals %>
@@ -13,10 +14,26 @@
 				<td>
 					<%= goal.goal %>
 				</td>
-				<td><%= link_to 'Edit', '#' %> | <%= link_to 'Delete', goal_path(current_user.id, goal.id), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
+				<td><%= link_to 'Edit', edit_goal_path(goal.id) %> | 
+					<%= link_to 'Delete', goal_path(current_user.id, goal.id), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %> | 
+					<%= link_to 'Restart', restart_goal_path(current_user.id, goal.id), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %> | 
+					<%= link_to 'Done', goal_done_path(current_user.id, goal.id), method: :put, data: { confirm: 'Are you sure?' }, :remote => true %>
+				</td>
 			</tr>
 		<% end %>
 	</table>
-<% else %>
-	<h1>You don't have any goal</h1>
+<% end %>
+
+<% if @all_goals %>
+	<h3>All goals</h3>
+	<table class="table table-font is-striped table-small">
+		<% @all_goals.each do |goal| %>
+			<tr>
+				<td>
+					<%= goal.goal %>
+				</td>
+				<td><%= link_to 'Add to my goals', add_goal_user_path(current_user.id, goal.id), method: :put, data: { confirm: 'Are you sure?' }, :remote => true %></td>
+			</tr>
+		<% end %>
+	</table>
 <% end %>

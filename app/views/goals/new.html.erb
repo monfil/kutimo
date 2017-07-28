@@ -1,0 +1,12 @@
+<% provide(:title, 'New Goal') %>
+<h3>New goal</h3>
+
+<%= form_for @new_goal, url: create_goal_path, :method => :POST do |f| %>
+	 <p>
+    <%= f.text_field :goal, class: "input" %>
+  </p>
+ 
+  <p>
+    <%= f.submit "Save", class: "button is-primary is-large" %>
+  </p>
+<% end %>
