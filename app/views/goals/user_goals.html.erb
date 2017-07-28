@@ -1,0 +1,7 @@
+<% provide(:title, "#{current_user.name} goals") %>
+
+<% if @user_goals %>
+	<h1>This are your goals:</h1>
+<% else %>
+	<h1>You don't have any goal</h1>
+<% end %>

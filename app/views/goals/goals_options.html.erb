@@ -1,0 +1,22 @@
+<% provide(:title, 'Goals') %>
+
+<div class="block">
+	<%= link_to "My goals", user_goals_path, class: "button is-info" %>
+	<%= link_to "New goal", '#', class: "button is-success" %>
+</div>
+
+<% if @user_goals %>
+	<h3>This are your goals:</h3>
+	<table class="table table-font is-striped table-small">
+		<% @user_goals.each do |goal| %>
+			<tr id="<%= "delete_user_#{goal.id}" %>">
+				<td>
+					<%= goal.goal %>
+				</td>
+				<td><%= link_to 'Edit', '#' %> | <%= link_to 'Delete', goal_path(current_user.id, goal.id), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
+			</tr>
+		<% end %>
+	</table>
+<% else %>
+	<h1>You don't have any goal</h1>
+<% end %>
