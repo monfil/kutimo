@@ -1,4 +1,4 @@
-<%= form_for @new_goal, url: new_goal_path(@new_goal), :method => :POST do |f| %>
+<%= form_for @goal_edit, url: update_goal_path(@goal_edit), :method => :POST do |f| %>
 	 <p>
     <%= f.text_field :goal, class: "input" %>
   </p>
