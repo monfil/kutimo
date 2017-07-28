@@ -40,12 +40,16 @@ Rails.application.routes.draw do
 
 	get '/add_goal/:user_id', to: 'goals#show_goals', as: 'add_goal'
 
-	put '/add_goal_user/:user_id/:goal_id', to: 'goals#add_goal', as: 'add_goal_user'
+	put '/user/:user_id/goal/:goal_id/add_goal_user', to: 'goals#add_goal', as: 'add_goal_user'
 
 	delete '/restart_goal_record/:user_id/:goal_id', to: 'goals#restart_goal_record', as: 'restart_goal'
 
 	put '/mark_goal/:user_id/:goal_id', to: 'goals#mark_goal', as: 'goal_done'
 
-	resources :users
+	get     '/rewards',     to: 'rewards#show',    as: 'rewards'
+
+	delete '/user/:user_id/rewards/:reward_id/', to: 'rewards#destroy', as: 'delete_reward'
+
+	resources :users, :rewards
 
 end

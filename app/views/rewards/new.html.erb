@@ -1,0 +1,21 @@
+<% provide(:title, 'New Reward') %>
+
+<section class="section is-small">
+	<div class="container">
+		<div class="columns is-mobile">
+			<div class="column is-8 is-offset-2">
+				<h3>New reward</h3>
+
+				<%= form_for @reward do |f| %>
+					 <p>
+				    <%= f.text_field :reward, class: "input" %>
+				  </p>
+				 
+				  <p>
+				    <%= f.submit "Save", class: "button is-primary is-large" %>
+				  </p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</section>

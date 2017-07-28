@@ -1,0 +1,23 @@
+<% provide(:title, 'Rewards') %>
+
+<% if @rewards %>
+	<h3>This are your reward/s:</h3>
+	<table class="table table-font is-striped table-small">
+		<% @rewards.each do |reward| %>
+			<tr id="<%= "delete_user_#{reward.id}" %>">
+				<td>
+					<%= reward.reward %>
+				</td>
+				<td>
+					<%= link_to 'Edit', edit_reward_path(reward.id) %> |
+					<%= link_to 'Delete', delete_reward_path(current_user.id, reward.id), method: :delete %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+
+<% end %>
+
+<div class="block">
+	<%= link_to "New reward", new_reward_path, class: "button is-warning" %>
+</div>
