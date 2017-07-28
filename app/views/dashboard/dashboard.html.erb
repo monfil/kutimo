@@ -1,0 +1,45 @@
+<% provide(:title, 'Dashboard') %>
+<% if @all_users %>
+	<h1>Resume</h1>
+	<br>
+
+	<table class="table is-striped table-font"> <!-- class="table" -->
+		<tr>
+			<th>User</th>
+			<th>Goals</th>
+			<% for i in 1..15 %>
+				<th><%= i %></th>
+			<% end %>
+		</tr>
+
+		<% @all_users.each do |user| %>
+
+			<tr>
+	      <td rowspan="<%= user.goals.count %>">
+	      	<%= user.name %><br><br>
+	      	Debe: <br>
+	      	$ <%= user.vulgarity.amount %><br><br>
+	      	Reward:<br>
+	      	<% user.rewards.each do |reward| %>
+							<%= reward.reward %><br>
+						<% end %>
+	      </td>
+
+	      <% user.goals.each do |goal| %>
+
+	      	<% @goal_all_daily_records = UserGoal.find_by(user_id: user.id, goal_id: goal.id).daily_records %>
+
+	      	<td><%= goal.goal %></td>
+
+		      <% for i in 1..@goal_all_daily_records.count %>
+						<td>x</td>
+					<% end %>
+		  </tr>
+					
+		 		<% end %> <!-- End user.goals -->
+			
+		<% end %> <!-- End @all_users iteration -->
+
+	</table>
+
+<% end %>
